@@ -415,8 +415,8 @@ async function downloadPdf(id) {
     let y = 45;
     const lineH = 6;
     headerRows.forEach(([label, value]) => {
-        const labelLines = doc.splitTextToSize(label, labelW - horizontalPad * 2);
-        const valueLines = doc.splitTextToSize(value, valueW - horizontalPad * 2);
+        const labelLines = doc.splitTextToSize(label, labelW - horizontalPad);
+        const valueLines = doc.splitTextToSize(value, valueW - horizontalPad);
         const lines = Math.max(labelLines.length, valueLines.length);
         const rowH = lines * lineH + verticalPad * 2;
         doc.rect(startX, y, valueW, rowH);
@@ -441,7 +441,7 @@ async function downloadPdf(id) {
     const itemStartX = (doc.internal.pageSize.getWidth() - tableW) / 2;
 
     function drawItemRow(desc, cost, qty, total) {
-        const descLines = doc.splitTextToSize(desc, colWDesc - horizontalPad * 2);
+        const descLines = doc.splitTextToSize(desc, colWDesc - horizontalPad);
         const lines = Math.max(descLines.length, 1);
         const rowH = lines * lineH + verticalPad * 2;
         doc.rect(itemStartX, y, colWTotal, rowH);
